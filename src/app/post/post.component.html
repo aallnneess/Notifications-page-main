@@ -1,0 +1,39 @@
+<div [ngClass]="message.newMessage ? 'bg-Very-light-grayish-blue' : 'bg-White'" class="flex p-4 rounded-lg">
+
+  <!-- User Image -->
+  <img class="w-12 h-12" src="{{message.imageUrl}}" alt="avatar image">
+
+  <!-- Content -->
+  <div class="flex flex-col w-full ml-3">
+
+    <div class="flex justify-between space-x-2">
+
+      <div class="">
+
+        <span class="inline-block mr-2 font-extrabold hover:text-Blue hover:cursor-pointer">{{message.name}}</span>
+        <span class="text-Grayish-blue mr-2 font-medium">{{message.reason}}</span>
+        <span *ngIf="message.topic.length > 0"
+              class="text-Dark-grayish-blue mr-2 font-bold hover:text-Blue hover:cursor-pointer">{{message.topic}}</span>
+        <span *ngIf="message.group.length > 0"
+              class="text-Dark-grayish-blue mr-2 font-bold hover:text-Blue hover:cursor-pointer">{{message.group}}</span>
+        <div *ngIf="message.newMessage" class="h-2 w-2 rounded-full bg-Red mr-2 inline-block"></div>
+
+        <p class="block text-Grayish-blue">{{message.sendTime}}</p>
+
+      </div>
+
+      <img *ngIf="message.commentedPictureUrl.length > 0" class="w-12 h-12" src="{{message.commentedPictureUrl}}" alt="commented picture">
+
+    </div>
+
+
+    <!-- Private Message Box -->
+    <div *ngIf="message.privateMessage.length > 0" class="mt-2 p-4 border border-Grayish-blue rounded-lg">
+      <p class="text-Dark-grayish-blue">
+        {{message.privateMessage}}
+      </p>
+    </div>
+
+  </div>
+
+</div>
